@@ -1,0 +1,7 @@
+[workspace]
+members = [
+  "crates/excel-slim-core",
+  "crates/excel-slim-cli",
+  "crates/excel-slim-py",
+]
+resolver = "2"
