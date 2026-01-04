@@ -37,4 +37,4 @@ jobs:
         env:
           MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          maturin publish --skip-existing --interpreter python
+          maturin publish -m crates/excel-slim-py/Cargo.toml --skip-existing --interpreter python
