@@ -34,7 +34,7 @@ fn parse_options(options: Option<&PyDict>) -> PyResult<Options> {
         return Ok(opts);
     };
 
-    if let Some(profile) = dict.get_item("profile") {
+    if let Ok(Some(profile)) = dict.get_item("profile") {
         let value: String = profile.extract()?;
         opts.profile = match value.as_str() {
             "safe" => Profile::Safe,
@@ -48,15 +48,15 @@ fn parse_options(options: Option<&PyDict>) -> PyResult<Options> {
         };
     }
 
-    if let Some(xml) = dict.get_item("xml") {
+    if let Ok(Some(xml)) = dict.get_item("xml") {
         opts.xml = xml.extract()?;
     }
 
-    if let Some(zip) = dict.get_item("zip") {
+    if let Ok(Some(zip)) = dict.get_item("zip") {
         opts.zip = zip.extract()?;
     }
 
-    if let Some(vba) = dict.get_item("vba") {
+    if let Ok(Some(vba)) = dict.get_item("vba") {
         let value: String = vba.extract()?;
         opts.vba = match value.as_str() {
             "auto" => VbaMode::Auto,
@@ -70,7 +70,7 @@ fn parse_options(options: Option<&PyDict>) -> PyResult<Options> {
         };
     }
 
-    if let Some(media) = dict.get_item("media") {
+    if let Ok(Some(media)) = dict.get_item("media") {
         let value: String = media.extract()?;
         opts.media = match value.as_str() {
             "off" => MediaMode::Off,
