@@ -14,7 +14,7 @@ use std::path::Path;
 
 pub fn analyze_path(path: &Path) -> Result<AnalysisReport, SlimError> {
     let profile = detector::detect_path(path)?;
-    Ok(AnalysisReport::from_profile(path, &profile))
+    Ok(AnalysisReport::from_profile(&profile))
 }
 
 pub fn optimize_path(

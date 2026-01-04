@@ -33,7 +33,7 @@ pub fn detect_path(path: &Path) -> Result<FileProfile, SlimError> {
         return detect_zip(path, size_bytes);
     }
 
-    if magic == OLE_MAGIC {
+    if magic == OLE_MAGIC.as_slice() {
         return Ok(FileProfile {
             format: WorkbookFormat::Xls,
             size_bytes,
@@ -89,7 +89,7 @@ fn detect_zip(path: &Path, size_bytes: u64) -> Result<FileProfile, SlimError> {
     let mut styles_bytes = 0u64;
 
     for i in 0..archive.len() {
-        let mut entry = archive
+        let entry = archive
             .by_index(i)
             .map_err(|err| SlimError::InvalidZip { message: err.to_string() })?;
         let name = entry.name().to_string();

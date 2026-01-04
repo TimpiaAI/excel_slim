@@ -98,7 +98,7 @@ pub struct AnalysisReport {
 }
 
 impl AnalysisReport {
-    pub fn from_profile(path: &Path, profile: &FileProfile) -> Self {
+    pub fn from_profile(profile: &FileProfile) -> Self {
         let mut recommendations = Vec::new();
         let mut risks = Vec::new();
 
